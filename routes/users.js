@@ -7,20 +7,19 @@ var Rule = require('../models/rule');
 /* GET users listing. */
 router.get('/', isLoggedIn, function(req, res, next) {
     var user = req.user.local.username;
-    req.session.view = "main";
-    res.redirect('/usr/' + user);
+
+    if (!req.session.view) {
+        var view = "main";
+    } else {
+        var  view = req.session.view;
+    }    res.redirect('/usr/' + user);
+
 });
 
 router.get('/signup', function(req, res, next) {
     // redirect to homepage if 'get' signup
     res.redirect('/');
 });
-
-// router.post('/signup', passport.authenticate('local-signup', {
-//     successRedirect: '/users',
-//     failureRedirect: '/',
-//     failureFlash: true
-// }));
 
 router.post('/signup', function(req, res, next) {
     passport.authenticate('local-signup', function(err, user, info) {

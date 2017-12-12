@@ -34,7 +34,27 @@ router.get('/', function(req, res, next) {
             });
             break;
         default:
-            res.render('index', { title: 'MineCTC', user: user, mode: 'home', view: view });
+
+            var os = "lin";
+
+            var ua = req.headers['user-agent'];
+
+            if (ua.indexOf("Macintosh") > -1){
+                console.log("its a mac");
+                os = "mac";
+            }
+
+            if (ua.indexOf("Windows") > -1){
+                console.log("its a win");
+                os = "win";
+            }
+
+            if (ua.indexOf("Linux") > -1){
+                console.log("its a lin");
+                os = "lin";
+            }
+
+            res.render('index', { title: 'MineCTC', user: user, mode: 'home', view: view, os: os });
     }
 });
 

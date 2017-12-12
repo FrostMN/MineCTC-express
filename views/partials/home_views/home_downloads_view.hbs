@@ -1,1 +1,28 @@
-downloads
+<!--<div id="download-view-content" class="download-view-content">-->
+    <div class="download-view-text">
+
+        {{#switch os}}
+            {{#case "mac"}}
+                {{> home_download_mac }}
+            {{/case}}
+
+            {{#case "win"}}
+                {{> home_download_mwin }}
+            {{/case}}
+
+            {{#case "lin"}}
+                {{> home_download_lin }}
+            {{/case}}
+        {{/switch}}
+
+
+        <div id="modpack" class ="download-div">
+            <a id="modpack-link" href="/downloads/mods/MinectcRelease01082017.zip">
+                <img id="modpack-img" src="/images/zip.png">
+                <div class = "download-div-info">
+                    Mod Pack Download<br>MinectcRelease01082017.zip
+                </div>
+            </a>
+        </div>
+    </div>
+<!--</div>-->

@@ -12,11 +12,10 @@ router.get('/', isAdmin, function(req, res, next) {
     var admin = req.user.info.admin;
 
 
-    var view = "";
     if (req.session.view) {
-        view = req.session.view;
+        var view = req.session.view;
     } else {
-        view = "main";
+        var view = "main";
     }
 
     switch (view) {
