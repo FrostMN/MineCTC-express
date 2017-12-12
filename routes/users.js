@@ -8,11 +8,13 @@ var Rule = require('../models/rule');
 router.get('/', isLoggedIn, function(req, res, next) {
     var user = req.user.local.username;
 
-    if (!req.session.view) {
-        var view = "main";
-    } else {
-        var  view = req.session.view;
-    }    res.redirect('/usr/' + user);
+    // if (!req.session.view) {
+    //     var view = "main";
+    // } else {
+    //     var  view = req.session.view;
+    // }
+
+    res.redirect('/usr/' + user);
 
 });
 
@@ -46,39 +48,39 @@ router.get('/:username', isLoggedIn, function (req, res, next) {
 
     var admin = req.user.info.admin;
     var user = req.user;
-    var view = req.session.view;
+    // var view = req.session.view;
+
+    if (!req.session.view) {
+        var view = "main";
+    } else {
+        var  view = req.session.view;
+    }
+
 
     console.log(view);
 
     switch (view) {
-        // case "rules":
-        //     Rule.findOne({}, {}, {sort: {'editDate': -1}}, function (err, rules) {
-        //
-        //         if (rules) {
-        //             console.log("rules exist");
-        //             var rulesText = rules.data.body;
-        //         } else {
-        //             console.log("no rules exist");
-        //             var rulesText = "no rules have been set";
-        //         }
-        //
-        //         if (admin) {
-        //             res.render('users', {
-        //                 title: 'MineCTC',
-        //                 user: user,
-        //                 mode: 'user',
-        //                 view: view,
-        //                 rules: rulesText,
-        //                 admin: admin
-        //             });
-        //         } else {
-        //             res.redirect('/');
-        //         }
-        //     });
+        case "main":
+            Rule.findOne({}, {}, { sort: { 'editDate' : -1 } }, function(err, rules) {
+
+                if (rules) {
+                    console.log("rules exist");
+                    var rulesText = rules.data.body;
+                } else {
+                    console.log("no rules exist");
+                    var rulesText = "no rules have been set";
+                }
+
+                console.log("rulesText: ");
+                console.log(rulesText);
+
+                res.render('users', {title: 'MineCTC', user: user, mode: 'user', view: view, rules: rulesText, admin: admin});
+            });
+
         case "tickets":
             res.render('users', {title: 'MineCTC', user: user, mode: 'user', view: view, admin: admin});
         default:
-            res.render('users', { title: 'MineCTC', user: user, mode: 'user', view: view, admin: admin});
+            res.render('users', {title: 'MineCTC', user: user, mode: 'user', view: view, admin: admin});
 
     }
 });

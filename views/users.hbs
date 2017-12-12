@@ -1,21 +1,27 @@
 <div class="content">
     {{# if user.info.verified }}
-
-        {{# if user.info.rules}}
-            rules accepted
-        {{ else }}
-            rules not accepted
-
-            <a href="javascript:void(0)" onclick="showModal('rules-modal')"> accept rules</a>
-            {{> rules_modal }}
-
-        {{/if}}
-
     {{else}}
-
         please verify email
         <a href="/usr/{{ user.local.username }}/verify/{{ user.info.verify_string }}">verify</a>
+    {{/if}}
+
+    {{# if user.info.rules }}
+    {{ else }}
+        rules not accepted
+
+        <a href="javascript:void(0)" onclick="showModal('rules-modal')"> accept rules</a>
+        {{> rules_modal rules=rules user=user }}
 
     {{/if}}
+
+    {{#switch view}}
+        {{#case "main"}}
+            {{> user_main_view }}
+        {{/case}}
+        {{#case "tickets"}}
+            {{> home_downloads_view os=os }}
+        {{/case}}
+    {{/switch}}
+
 
 </div>
