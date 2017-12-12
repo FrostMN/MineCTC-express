@@ -48,7 +48,7 @@ db_url = db_url.replace('{db}', process.env.MONGO_MINECTC_DB);
 
 // console.log(db_url);
 
-var local = true;
+var local = process.env.LOCAL;
 
 mongoose.connect(db_url, {useMongoClient: true})
     .then( () => {console.log("Connected to MongoDB")})
