@@ -1,0 +1,12 @@
+<div id="edit-rules-modal" class="modal">
+    <div class="modal-content">
+
+        <textarea id="rules-modal-text" name="text" form="rules">{{ rules }}</textarea>
+
+        <form action="/admin/rules/save" id="rules" method="POST">
+            <button type="button" onclick="closeModal(this)">cancel</button>
+            <input name="major" type="checkbox">Major Edit</input>
+            <button>accept</button>
+        </form>
+    </div>
+</div>

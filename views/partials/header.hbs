@@ -1,0 +1,61 @@
+<div class="header">
+    {{#if user}}
+        <ul class="nav-bar">
+        {{!-- credit for this switch helper is in helpers.js --}}
+        {{#switch mode}}
+            {{#case "home"}}
+            <li class="header-btn-right">
+                <div id="user-drop" class="dropdown header-btn-right">
+                    <button class="dropbtn">{{user.local.username}}</button>
+                    <div class="dropdown-content">
+                        <a href="/usr">user</a>
+                        {{#if user.info.admin}}
+                            <a href="/admin">admin</a>
+                        {{/if}}
+                        <a href="/logout">log out</a>
+                    </div>
+                </div>
+            </li>
+            {{/case}}
+            {{#case "user"}}
+            <li class="header-btn-right">
+                <div id="user-drop" class="dropdown header-btn-right">
+                    <button class="dropbtn">{{user.local.username}}</button>
+                    <div class="dropdown-content">
+                        <a href="/">home</a>
+                        <a href="javascript:void(0)">user</a>
+                        {{#if user.info.admin}}
+                            <a href="/admin">admin</a>
+                        {{/if}}
+                        <a href="/logout">log out</a>
+                    </div>
+                </div>
+            </li>
+            {{/case}}
+            {{#case "admin"}}
+                <li class="header-btn-right">
+                <div id="user-drop" class="dropdown header-btn-right">
+                    <button class="dropbtn">{{user.local.username}}</button>
+                    <div class="dropdown-content">
+                        <a href="/">home</a>
+                        <a href="/usr">user</a>
+                        <a href="javascript:void(0)">admin</a>
+                        <a href="/logout">log out</a>
+                    </div>
+                </div>
+                </li>
+            {{/case}}
+        {{/switch}}
+        </ul>
+    {{else}}
+        <ul class="nav-bar">
+            <li class="header-btn-left"><a href="/">MineCTC</a></li>
+            <li class="header-btn-right"><a href="javascript:void(0)" onclick="showModal('login-modal')">login</a></li>
+            <li class="header-btn-right"><a href="javascript:void(0)" onclick="showModal('signup-modal')">signup</a></li>
+        </ul>
+        {{!--Includes the partial that contains the login modal--}}
+        {{>login_modal}}
+        {{!--Includes the partial that contains the signup modal--}}
+        {{>signup_modal}}
+    {{/if}}
+</div>

@@ -1,0 +1,40 @@
+<div id="administer-user-modal" class="modal">
+    <div class="modal-content">
+        <form action="/admin/user/save" method="POST">
+            <input type="text" name="username" value="{{ user.local.username }}" readonly><br>
+            <input type="email" name="email" placeholder="email" value="{{ user.info.email }}"><br>
+            {{# if user.info.verified}}
+                <input type="checkbox" name="verified" value="verified email" checked> Verified Email <br>
+            {{else}}
+                <input type="checkbox" name="verified" value="verified email"> Verified Email <br>
+            {{/if}}
+            <input type="text" name="first" placeholder="First Name" value="{{ user.info.first_name }}"><br>
+            <input type="text" name="last" placeholder="Last Name" value="{{ user.info.last_name }}"><br>
+            <input type="text" name="mc_name" placeholder="minecraft name" value="{{ user.info.mc_name }}"><br>
+
+            {{# if user.info.admin }}
+                <input type="checkbox" name="admin" value="administrator" checked> Admin? <br>
+            {{else}}
+                <input type="checkbox" name="admin" value="administrator"> Admin? <br>
+            {{/if}}
+
+            {{# if user.info.banned }}
+                <input type="checkbox" name="banned" value="banned" checked> Banned? <br>
+            {{else}}
+                <input type="checkbox" name="banned" value="banned"> Banned? <br>
+            {{/if}}
+
+            <button type="button" onclick="closeModal(this)">cancel</button>
+            <button>save</button>
+        </form>
+    </div>
+</div>
+
+
+
+<!--Player: {{ user.info.first_name }} {{ user.info.last_name }} |-->
+<!--Email: {{ user.info.email }} |-->
+<!--Verified: {{ user.info.verified }} |-->
+<!--Admin: {{ user.info.admin }} |-->
+<!--Banned: {{ user.info.banned }} |-->
+<!--Minecraft Name: {{ user.info.mc_name }} |-->

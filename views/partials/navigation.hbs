@@ -1,0 +1,45 @@
+<div class="navigation">
+    <ul>
+    {{!-- credit for this switch helper is in helpers.js --}}
+    {{#switch mode}}
+        {{#case "home"}}
+            <li>
+                <a href="/main">Home</a>
+            </li>
+            <li>
+                <a href="/downloads">Downloads</a>
+            </li>
+            <li>
+                <a href="/map">map</a>
+            </li>
+            <li>
+                <a href="/rules">Rules</a>
+            </li>
+        {{/case}}
+
+        {{#case "user"}}
+            <li>
+                <a href="/usr/main">Home</a>
+            </li>
+            <li>
+                <a href="/usr/tickets">Tickets</a>
+            </li>
+        {{/case}}
+
+        {{#case "admin"}}
+            <li>
+                <a href="/admin/main" onclick="setView('main')">Home</a>
+            </li>
+            <li>
+                <a href="/admin/rules" onclick="setView('rules')">Rules</a>
+            </li>
+            <li>
+                <a href="/admin/users" onclick="setView('users')">Users</a>
+            </li>
+            <li>
+                <a href="/admin/tickets" onclick="setView('tickets')">Tickets</a>
+            </li>
+        {{/case}}
+    {{/switch}}
+    </ul>
+</div>

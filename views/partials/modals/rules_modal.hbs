@@ -1,0 +1,14 @@
+<div id="rules-modal" class="modal">
+    <div class="modal-content">
+
+        <div id="rules-modal-text">
+            {{ parseMarkdown rules }}
+        </div>
+
+        <form action="/usr/{{ user.local.username }}/rules" method="POST">
+            <input type="hidden" name="user_id" value="{{ user._id }}"><br>
+            <button type="button" onclick="closeModal(this)">cancel</button>
+            <button>accept</button>
+        </form>
+    </div>
+</div>

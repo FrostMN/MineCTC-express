@@ -1,0 +1,19 @@
+<div class="content">
+    {{#switch view}}
+        {{#case "main"}}
+            {{> home_main_view }}
+        {{/case}}
+
+        {{#case "downloads"}}
+            {{> home_downloads_view }}
+        {{/case}}
+
+        {{#case "map"}}
+            {{> home_map_view }}
+        {{/case}}
+
+        {{#case "rules"}}
+            {{> home_rules_view }}
+        {{/case}}
+    {{/switch}}
+</div>

@@ -1,0 +1,21 @@
+<div class="content">
+    {{!-- credit for this switch helper is in helpers.js --}}
+    {{#switch view}}
+        {{#case "main"}}
+            {{> admin_main_view }}
+        {{/case}}
+
+        {{#case "rules"}}
+            {{> admin_rules_view rules=rules }}
+        {{/case}}
+
+        {{#case "users"}}
+            {{> admin_users_view users=users }}
+        {{/case}}
+
+        {{#case "tickets"}}
+            {{> admin_tickets_view }}
+        {{/case}}
+    {{/switch}}
+</div>
+

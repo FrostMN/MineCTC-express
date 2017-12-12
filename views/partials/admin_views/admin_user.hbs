@@ -1,0 +1,15 @@
+
+
+<div style="border: solid black 2px; padding: 1em;">
+    User: {{ user.local.username }} |
+    Player: {{ user.info.first_name }} {{ user.info.last_name }} |
+    Email: {{ user.info.email }} |
+    Verified: {{ user.info.verified }} |
+    Admin: {{ user.info.admin }} |
+    Banned: {{ user.info.banned }} |
+    Minecraft Name: {{ user.info.mc_name }} |
+
+    <a href="javascript:void(0)" onclick="showModal('administer-user-modal')">edit</a>
+
+</div>
+{{> administer_user_modal user=user }}
