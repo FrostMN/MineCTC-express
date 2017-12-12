@@ -39,6 +39,8 @@ router.get('/', function(req, res, next) {
 
             var ua = req.headers['user-agent'];
 
+            console.log(ua);
+
             if (ua.indexOf("Macintosh") > -1){
                 console.log("its a mac");
                 os = "mac";
